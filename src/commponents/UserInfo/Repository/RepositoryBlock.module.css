@@ -1,0 +1,83 @@
+.rep {
+    width: 90%;
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.repositoriesBlock {
+    width: 100%;
+}
+
+.listRepos {
+    width: 90%;
+    min-height: 50px;
+    background-color: #fff;
+    padding: inherit;
+    margin-block: 5px;;
+    font-family: Inter, serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #000000;
+
+}
+
+.repositories {
+    font-family: Inter, serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 130%;
+    color: #000000;
+
+}
+
+.hrefNameRepositories {
+    text-decoration: none;
+    font-family: Inter, serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    color: #0064EB;
+}
+
+.emptyList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: Inter, serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 22px;
+    line-height: 140%;
+    text-align: center;
+    color: #808080;
+}
+
+.pagination {
+    width: 90%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+@media screen  and (max-width: 908px) {
+    .all {
+        flex-wrap: wrap;
+    }
+}
+@media screen  and (max-width: 464px) {
+    .hrefNameRepositories {
+        font-size: 16px;
+    }
+
+    .listRepos {
+        font-size: 12px;
+        width: 85%;
+    }
+}

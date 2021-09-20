@@ -1,0 +1,10 @@
+.rootDiv{
+    font-family: Inter, serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 21px;
+    display: flex;
+    align-items: center;
+    color: #808080;
+}

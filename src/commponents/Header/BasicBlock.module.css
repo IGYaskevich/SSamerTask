@@ -1,0 +1,33 @@
+.header {
+    width: 100%;
+    height: 72px;
+    background-color: black;
+    display: flex;
+    align-items: center;
+}
+
+.gitGubIcon {
+    color: white;
+    margin: 30px;
+}
+
+.searchIcon {
+    color: #808080;
+}
+
+.textField {
+    width: 500px;
+    height: 40px;
+    border-radius: 6px;
+    background: #FFFFFF;
+    margin: 10px;
+}
+
+@media screen  and (max-width: 600px) {
+    .textField {
+        width: 250px;
+    }
+    .gitGubIcon {
+        margin: 10px;
+    }
+}
