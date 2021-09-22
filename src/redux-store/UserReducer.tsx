@@ -29,17 +29,16 @@ export const setUserNameAC = (avatar_url: string, name: string, followers: numbe
     type: 'userReducer/SET_USER_NAME', payload: {avatar_url, name, followers, login, following, html_url, public_repos}
 } as const)
 
-export const findUserDataTC = (userName: string): AppThunkType => (dispatch: Dispatch<ActionTypes>) => {
-    dispatch(setStatusAC({status: 'loading'}))
-    usersAPI.getUser(userName)
-        .then(result => {
-            let {avatar_url, name, followers, login, following, html_url, public_repos} = result.data
-            dispatch(setUserNameAC(avatar_url, name, followers, login, following, html_url, public_repos))
-            dispatch(setStatusAC({status: 'succeeded'}))
-        })
-        .catch(() => {
-            dispatch(setStatusAC({status: 'failed'}))
-        })
+export const findUserDataTC = (userName: string): AppThunkType => async (dispatch: Dispatch<ActionTypes>) => {
+    try {
+        dispatch(setStatusAC({status: 'loading'}))
 
+        const result = await usersAPI.getUser(userName)
+        let {avatar_url, name, followers, login, following, html_url, public_repos} = result.data
+        dispatch(setUserNameAC(avatar_url, name, followers, login, following, html_url, public_repos))
+        dispatch(setStatusAC({status: 'succeeded'}))
+    } catch (error) {
+        dispatch(setStatusAC({status: 'failed'}))
+    }
 }
 

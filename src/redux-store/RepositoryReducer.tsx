@@ -23,17 +23,20 @@ export const userBlockReducer = (state: InitialStateReposPropsType = initialStat
     return state
 }
 
-export const getUserReposAC = (payload: InitialStateReposPropsType) => ({type: 'repositoryReducer/GET_REPOS_USER', payload} as const)
+export const getUserReposAC = (payload: InitialStateReposPropsType) => ({
+    type: 'repositoryReducer/GET_REPOS_USER',
+    payload
+} as const)
 
-export const getReposTC = (userName: string | undefined, page: number): AppThunkType => (dispatch: Dispatch<ActionTypes>) => {
-    dispatch(setStatusAC({status: 'loading'}))
-    reposAPI.getUserRepos(userName, page)
-        .then(result => {
-            dispatch(getUserReposAC(result.data))
-            dispatch(setStatusAC({status: 'succeeded'}))
-        })
-        .catch(() => {
-            dispatch(catchErrorAC({error: true}))
-        })
+export const getReposTC = (userName: string | undefined, page: number): AppThunkType => async (dispatch: Dispatch<ActionTypes>) => {
+    try {
+        dispatch(setStatusAC({status: 'loading'}))
+
+        const result = await reposAPI.getUserRepos(userName, page)
+        dispatch(getUserReposAC(result.data))
+        dispatch(setStatusAC({status: 'succeeded'}))
+    } catch (error) {
+        dispatch(catchErrorAC({error: true}))
+    }
 }
 
